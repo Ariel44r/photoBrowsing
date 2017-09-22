@@ -19,7 +19,7 @@ final class FlickrPhotoViewController: UICollectionViewController {
     
     fileprivate var searches = [FlickrSearchResults]()
     fileprivate let flickr = Flickr()
-    fileprivate let itemsPerRow: CGFloat = 4
+    fileprivate let itemsPerRow: CGFloat = 2
     
 }
 
@@ -73,6 +73,18 @@ extension FlickrPhotoViewController {
         return searches[section].searchResults.count
     }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FlickrPhotoHeaderView", for: indexPath) as! FlickrPhotoHeaderView
+            headerView.label.text = searches[(indexPath as NSIndexPath).section].searchTerm
+            return headerView
+            
+        default:
+            assert(false, "Unexpected element Kind")
+        }
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrPhotoCell
@@ -91,6 +103,9 @@ extension FlickrPhotoViewController {
         cell.backgroundColor = UIColor.black
         return cell
     }*/
+    
+    
+    
 }
 
 
