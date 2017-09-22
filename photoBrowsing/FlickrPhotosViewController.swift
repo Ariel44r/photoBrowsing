@@ -19,7 +19,7 @@ final class FlickrPhotoViewController: UICollectionViewController {
     
     fileprivate var searches = [FlickrSearchResults]()
     fileprivate let flickr = Flickr()
-    fileprivate let itemsPerRow: CGFloat = 2
+    fileprivate let itemsPerRow: CGFloat = 1
     
 }
 
@@ -108,7 +108,7 @@ extension FlickrPhotoViewController {
     
 }
 
-
+//MARK: collectionViewLayout
 extension FlickrPhotoViewController : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
